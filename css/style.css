@@ -1,0 +1,310 @@
+@charset "UTF-8";
+:root{
+
+    font-size: 100%;
+
+    --c-texto:white;
+    /* --c-hover:yellow; */
+
+
+    --size-h3:4em;
+    --size-responsive:3em;
+    --size-span:.5em;
+
+}
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  vertical-align: baseline;
+}
+
+/* Evitamos problemas con las imagenes */
+img, picture, video, iframe, figure {
+  max-width: 100%;
+  width: 100%;
+  display: block;
+}
+
+/* Reseteamos los enlaces para funcionar como cajas... */
+a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  font-size: inherit;
+}
+
+/* ... excepto los que se encuentran en párrafos */
+p a span{
+  display: inline;
+}
+
+/* Quitamos los puntos de los <li> */
+li {
+  list-style-type: none;
+}
+
+/* Configuramos anclas suaves */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Desactivamos estilos por defecto de las principales etiquetas de texto */
+h1, h2, h3, h4, h5, h6, p,  a, strong, blockquote, i, b, u, em {
+  font-size: 1em;
+  font-weight: inherit;
+  font-style: inherit;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Evitamos problemas con los pseudoelementos de quotes */
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none;
+}
+
+/* Configuramos el texto que seleccionamos */
+::-moz-selection {
+  background-color: var(--negro);
+  color: var(--blanco);
+}
+::selection {
+  background-color: var(--negro);
+  color: var(--blanco);
+}
+
+/* Nivelamos problemas de tipografías y colocación de formularios */
+form, input, textarea, select, button, label {
+  font-family: inherit;
+  font-size: inherit;
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
+  background-color: transparent;
+  color: inherit;
+  display: block;
+  /* opcional */
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+/* Reseteamos las tablas */
+table, tr, td {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Evitamos problemas con los SVG */
+svg {
+  width: 100%;
+  display: block;
+  fill: currentColor;
+}
+
+/* (Probándolo, no usar en producción) En el caso de añadir una  */
+/* p svg{
+  display: inline;
+  width: initial;
+} */
+/* Configuramos la tipografía para toda la web */
+body {
+  min-height: 100vh;
+  font-size: 100%;
+  background-color: black;
+  font-family: Helvetica, Arial, sans-serif;
+  color: var(--c-texto);
+  /* opcional */
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
+  /* opcional */
+ 
+}
+.Charlie-container{
+
+    width: 100%;
+    min-height: 100vh;
+
+    position: relative;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.Charlie-img{
+
+    width: 100%;
+    min-height: 100vh;
+
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    z-index: 1;
+
+    opacity: 0;
+    
+    transition: opacity 1s ease;
+
+    
+}
+.Charlie-img.isActive{
+
+  opacity: 1;
+
+  animation-name:crece;
+  animation-duration: 150s;
+
+  transition: crece 1s ease;
+
+}
+@keyframes crece{
+
+  0%{
+
+    scale: 1;
+  }
+
+  100%{
+
+    scale:4;
+  }
+}
+
+.Charlie{
+
+    width: 100%;
+    min-height: 100vh;
+    color: var(--c-texto);
+
+    background-color: transparent;
+    
+    position: absolute;
+    z-index: 2;
+
+    top: 0;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+
+    
+}
+
+.Charlie{
+    width: 100%;
+    min-height: 100vh;
+
+}
+
+.Charlie-ul{
+
+    width: 70%;
+    
+    min-height: 50vh;
+    /* background-color: aqua; */
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-content: center;
+
+    gap: 1rem;
+
+}
+.Charlie-li{
+  
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: flex-end;
+
+    color: var(--c-texto);
+
+
+    margin: 0 1rem 0 0;
+    padding: .5rem;
+
+    opacity: 0.4;
+  
+}
+  
+
+.Charlie-li.isActive{
+
+  transition :opacity 1s ease;
+  color: var(--c-texto);
+
+  opacity: 1;
+}
+
+
+
+.Charlie-h3{
+    width: 100%;
+    min-height: 2rem;
+
+    font-family: 'Roboto', serif;
+    
+
+    /* background-color: red; */
+    font-size:var(--size-h3);
+    font-weight:500;
+
+    cursor: pointer;
+
+  
+}
+
+.Charlie-span{
+    
+    font-size: var(--size-span);
+    font-style: oblique;
+
+    margin: 0 0 .8rem .4rem;
+}
+
+@media(max-width:400px){
+
+  .Charlie{
+
+    width: 100%;
+    max-height: 100vh;
+
+    overflow: visible;
+  }
+
+  .Charlie-img{
+
+    width: 100%;
+    
+    object-fit:cover;
+    text-align: center;
+
+
+  }
+
+  .Charlie-h3{
+
+    font-size:1.3em;
+    font-weight: 500;
+    font-weight:var(--weight-responsive);
+  }
+  .Charlie-span{
+
+    font-size: .5em;
+
+    margin: 0 0 .6rem .3rem ;
+  }
+    
+}
+
+
